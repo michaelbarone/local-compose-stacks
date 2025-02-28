@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  node-red:
+    container_name: node-red
+    restart: unless-stopped
+    image: nodered/node-red:latest
+    environment:
+      - TZ=America/Los_Angeles
+    ports:
+      - "192.168.3.249:1880:1880"
+    volumes:
+      - /home/cc/dockers/node-red/node-red-data:/data

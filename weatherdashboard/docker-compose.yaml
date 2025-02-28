@@ -1,0 +1,21 @@
+version: "2.3"
+services:
+  emby:
+    image: mbarone000/weatherdashboard:latest
+    container_name: weatherDashboard
+    environment:
+      - TIMEZONE=America/Los_Angeles
+      - weatherGovZone=CAZ016
+      - weatherBitKey=
+      - CITY=elk grove
+      - STATE=ca
+      - photoChange=60000
+      - flickrFeedID=78249294@N00
+      - googleMapsApi=
+      - mapsLat=38.5143
+      - mapsLong=-121.494
+      - NODE_ENV=development
+      - APP_NAME=weatherDashboard
+    ports:
+      - "192.168.3.250:8079:9876" # HTTP port
+    restart: on-failure

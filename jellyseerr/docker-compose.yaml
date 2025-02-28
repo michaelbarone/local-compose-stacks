@@ -1,0 +1,14 @@
+version: '3'
+services:
+    jellyseerr:
+       image: fallenbagel/jellyseerr:latest
+       container_name: jellyseerr
+       environment:
+            - LOG_LEVEL=debug
+            - JELLYFIN_TYPE=emby
+            - TZ=America/Los_Angeles
+       ports:
+            - "192.168.3.249:5055:5055"
+       volumes:
+            - /home/cc/dockers/jellyseerr/jellyseerr-data:/app/config
+       restart: unless-stopped

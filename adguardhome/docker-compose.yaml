@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    adguardhome:
+        container_name: adguardhome
+        restart: unless-stopped
+        volumes:
+            - '/home/cc/dockers/adguard/data:/opt/adguardhome/work'
+            - '/home/cc/dockers/adguard/config:/opt/adguardhome/conf'
+        ports:
+            - '192.168.3.3:53:53/tcp'
+            - '192.168.3.3:53:53/udp'
+            - '192.168.3.3:80:80/tcp'
+            - '192.168.3.3:443:443/tcp'
+            - '192.168.3.3:443:443/udp'
+            - '192.168.3.3:3000:3000/tcp'
+        image: adguard/adguardhome:latest

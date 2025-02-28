@@ -1,0 +1,26 @@
+version: "3"
+
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    environment:
+      - TZ=America/Los_Angeles
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - "192.168.3.249:80:80" # Public HTTP Port
+      - "192.168.3.249:443:443" # Public HTTPS Port
+      - "192.168.3.249:81:81" # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+    volumes:
+      - /home/cc/dockers/nginx-proxy-manager/nginx-proxy-manager-data:/data
+      - /home/cc/dockers/.letsencrypt:/etc/letsencrypt
+    networks:
+      - proxiable
+
+networks:
+  proxiable:
+    name: proxiable
+    external: true

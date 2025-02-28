@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  php-apache:
+    image: mbarone000/php7.4-apache:latest
+    container_name: cc-php-host
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - /home/cc/dockers/cc-php:/usr/local/etc/php
+      - /home/cc/dockers/cc-php-host:/var/www/html/
+    environment:
+      - PHP.allow_url_fopen=1
+    ports:
+      - "192.168.3.250:80:80"  # <Host Port>:<Container Port>
+    dns:
+      - 192.168.3.2
+      - 192.168.3.3
+    restart: always
+    networks:
+      - proxiable
+
+networks:
+  proxiable:
+    name: proxiable
+    external: true

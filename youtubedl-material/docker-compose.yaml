@@ -1,0 +1,19 @@
+version: "2"
+services:
+    ytdl_material:
+        environment: 
+            # ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
+            ytdl_use_local_db: 'true'
+            write_ytdl_config: 'true'
+        restart: always
+        #depends_on:
+        #    - ytdl-mongo-db
+        volumes:
+            - /home/cc/dockers/YoutubeDL-Material/appdata:/app/appdata
+            - /mnt/media/Download/youtube/audio:/app/audio
+            - /mnt/media/Download/youtube/video:/app/video
+            - /home/cc/dockers/YoutubeDL-Material/subscriptions:/app/subscriptions
+            - /home/cc/dockers/YoutubeDL-Material/users:/app/users
+        ports:
+            - "192.168.3.249:8998:17442"
+        image: tzahi12345/youtubedl-material:nightly

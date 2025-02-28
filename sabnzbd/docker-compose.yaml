@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+  sabnzbd:
+    image: linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /home/cc/dockers/sabnzbd/sabnzbd-data:/config
+      - /mnt/media/Download:/mnt/media/download #optional
+    ports:
+      - "192.168.3.249:8080:8080"
+    restart: unless-stopped
