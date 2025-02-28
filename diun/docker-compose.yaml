@@ -21,3 +21,7 @@ services:
       - "DIUN_NOTIF_SLACK_RENDERFIELDS=false"
       #- "DIUN_NOTIF_SLACK_TEMPLATEBODY=<!channel> Docker tag {{ if .Entry.Image.HubLink }}<{{ .Entry.Image.HubLink }}|`{{ .Entry.Image }}`>{{ else }}`{{ .Entry.Image }}`{{ end }}  {{ if (eq .Entry.Status 'new') }}available{{ else }}updated{{ end }}."
     restart: always
+
+
+
+# notes: DIUN_NOTIF_SLACK_WEBHOOKURL set this to have slack notificaitons.
